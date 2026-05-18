@@ -1,0 +1,11 @@
+Django Authentication =>
+
+to implement Authentication in django apps, django consist a built in app known as 'auth'
+
+    django -> contrib -> auth 
+    
+to handle user data it provides 'User' model and related forms,views, etc
+
+    django -> contrib -> auth -> models.py -> class User
+
+    django -> contrib -> auth -> forms.py -> class UserCreationForm
