@@ -16,12 +16,28 @@
 </head>
 
 <body>
+    {% if messages %}
+    {% for msg in messages %}
+
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    {% endfor %}
+    {% endif %}
 
     <div class="d-flex justify-content-center align-items-center " style="height: 100vh;">
         <div class="w-50 border p-3 shadow">
             <div class="text-center">
                 <h1>TO DO APP</h1>
+
                 <a href="{% url 'signup' %}" class="btn btn-success">Signup </a>
+                <a href="{% url 'signin' %}" class="btn btn-primary">Sign In </a>
+
+
             </div>
 
         </div>

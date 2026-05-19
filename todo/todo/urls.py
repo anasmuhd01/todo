@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',TodoHomeView.as_view(),name="tdhome"),
     path('account/',include("account.urls")),
+    path('todo/',include('todouser.urls'))
 ]

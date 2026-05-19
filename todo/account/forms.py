@@ -8,3 +8,8 @@ class UserForm(UserCreationForm):
         # fields = "__all__"
         fields = ["username","first_name", "last_name", "email", "password1", "password2"]
 
+
+class SigninForm(forms.Form):
+    username = forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control"}))
+    password = forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={"class":"form-control"}))
+
