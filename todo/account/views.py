@@ -1,14 +1,15 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.views import View
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from account.forms import *
 from django.contrib.auth import authenticate,login
 # Create your views here.
 
 class TodoHomeView(View):
     def get(req,self):
-        return render(req,"index.html")
+        form_data = User.objects.all()
+        return render(req,"index.html",{"data":form_data})
     
 class SignUpView(View):
     def get(self,req):
@@ -17,9 +18,10 @@ class SignUpView(View):
         return render(req,"signup.html",{"form":form})
     def post(self,req):
         form_data = UserForm(data=req.POST)
-        print(form_data)
+        
         if form_data.is_valid():
             form_data.save()
+           
             messages.success(req,"SignUp Sucessfull ")
             return redirect('tdhome')
         messages.warning(req,"Error,Please Signup again !")
@@ -38,7 +40,7 @@ class SignInView(View):
             user = authenticate(username=uname,password=pswd)
             if user:
                 login(req,user)
-                messages.success(req,"SignIn Sucessfull ")
+                messages.success(req,"Sign In Sucessfull ")
                 return redirect("tddash")
             else:
                 messages.warning(req,"Invalid Username/Password ")

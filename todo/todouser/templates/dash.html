@@ -18,7 +18,28 @@
 
 <body>
 
-
+    {% if messages %}
+    {% for msg in messages %}
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{msg}}
+    </div>
+    {% endif %}
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <div class="alert alert-info alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{msg}}
+    </div>
+    {% endif %}
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{msg}}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
 
 
     <h1>To Do Dash</h1>

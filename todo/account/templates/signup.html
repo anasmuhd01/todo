@@ -10,22 +10,24 @@
     <!-- Bootstrap CSS v5.3.8 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-        {% if messages %}
-        {% for msg in messages %}
-        
-        {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{msg}}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {% endif %}
-        
-        {% endfor %}
-        {% endif %}
+    {% if messages %}
+    {% for msg in messages %}
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <div class="alert alert-warning alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{msg}}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
 
     <div class="d-flex justify-content-center align-items-center " style="height: 100vh;">
         <div class="w-50 border p-3 shadow">

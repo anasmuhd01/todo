@@ -16,31 +16,61 @@
 </head>
 
 <body>
+    <h1>Home</h1>
+
     {% if messages %}
     {% for msg in messages %}
-
     {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{msg}}</strong>
+    <div class="alert alert-success alert-dismissible">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{msg}}
     </div>
     {% endif %}
-
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+    <div class="alert alert-info alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{msg}}
+    </div>
+    {% endif %}
+    {% if msg.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+    <div class="alert alert-warning alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{msg}}
+    </div>
+    {% endif %}
     {% endfor %}
     {% endif %}
 
     <div class="d-flex justify-content-center align-items-center " style="height: 100vh;">
         <div class="w-50 border p-3 shadow">
             <div class="text-center">
+
+
                 <h1>TO DO APP</h1>
 
-                <a href="{% url 'signup' %}" class="btn btn-success">Signup </a>
+                <a href="{% url 'signup' %}" class="btn btn-success">Sign Up </a>
                 <a href="{% url 'signin' %}" class="btn btn-primary">Sign In </a>
 
 
             </div>
 
         </div>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{i.username}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
 </body>
