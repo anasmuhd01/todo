@@ -11,6 +11,13 @@ class TodoHomeView(View):
         form_data = User.objects.all()
         return render(req,"index.html",{"data":form_data})
     
+class DeleterUserView(View):
+    def get(self,req,**kwargs):
+        id = kwargs.get('id')
+        User.objects.get(id=id).delete()
+        messages.warning(req,'user deleted')
+        return redirect('tdhome')
+    
 class SignUpView(View):
     def get(self,req):
         # form = UserCreationForm()
