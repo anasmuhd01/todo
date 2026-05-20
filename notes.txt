@@ -9,3 +9,18 @@ to handle user data it provides 'User' model and related forms,views, etc
     django -> contrib -> auth -> models.py -> class User
 
     django -> contrib -> auth -> forms.py -> class UserCreationForm
+
+Django Model Relationships =>
+-----------------------------
+- Model  relationship is a way to define how different data tables (models ) connect
+    to and interact with each other in a database
+
+one  → one  : used when one record ina model is related to exactly one record
+                in another model 
+                field : OneToOneField
+
+one  → many : one record in a model is related to multiple records in another
+                field : ForiegnKey
+
+many → many  : multiple records in one model can be associated with multiple records in another
+                field : ManyToManyField
