@@ -35,5 +35,8 @@ class DeleteTodoView(View):
         return redirect('tddash')
 
 class EditTodoView(View):
-    def get(self,req):
-        return render(req,)
+    def get(self,req,**kwargs):
+        id = kwargs.get('id')
+        qso = Todo.objects.get(id= id)
+        form = TodoForm(instance=qso)
+        return render(req,"edittodo.html",{"form":form})

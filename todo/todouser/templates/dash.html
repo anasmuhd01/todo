@@ -46,8 +46,8 @@
             <td>{{i.title}}</td>
             <td>{{i.description}}</td>
             <td>
-                <a href="" class="btn btn-warning">Edit</a>
-                <a href="{% url 'deletetodo' i.id%}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'edittodo' i.id %}" class="btn btn-warning">Edit</a>
+                <a href="{% url 'deletetodo' i.id %}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         {% endfor %}

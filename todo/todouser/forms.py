@@ -5,3 +5,7 @@ class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo
         exclude = ['user']
+        widgets = {
+            "title":forms.TextInput(attrs={"class":"form-control"}),
+            "description":forms.TextInput(attrs={"class":"form-control"})
+        }
