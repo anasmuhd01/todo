@@ -3,7 +3,7 @@ from django.views import View
 from todouser.forms import *
 from django.contrib import messages
 from todouser.models import *
-
+from django.http import HttpResponse
 # Create your views here.
 
 class DashView(View):
@@ -40,3 +40,16 @@ class EditTodoView(View):
         qso = Todo.objects.get(id= id)
         form = TodoForm(instance=qso)
         return render(req,"edittodo.html",{"form":form})
+    def post(self,req,**kwargs):
+        
+        user=req.user
+        id = kwargs.get('id')
+        qso = Todo.objects.get(id=id)
+        form_data = TodoForm(data=req.POST,instance=qso)
+
+        if form_data.is_valid():
+            todo_update = form_data.save(commit=False)
+            todo_update.user = user
+            todo_update.save()
+            return redirect('tddash')
+        return HttpResponse("validation failed")
